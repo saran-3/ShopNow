@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "714145340506",
+    "project_id": "shopzmclay",
+    "storage_bucket": "shopzmclay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714145340506:android:3513761e77bf577db80c63",
+        "android_client_info": {
+          "package_name": "com.example.vendorzmclay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714145340506-cnp3a2bv35o1rqniv8636l7hgu1o1j6s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vendorzmclay",
+            "certificate_hash": "feb3c0bc5f5fdaade45af23cc48a7c08acb0eea1"
+          }
+        },
+        {
+          "client_id": "714145340506-95ipfogtj9bp38i5bcuvu9bnci58psjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlucbBL89ga_ioxrJQcnfOWdGKEZJ0kDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714145340506-6kkj72sordotlnlggu673urnd4skhf5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714145340506:android:d8cbd7fd5b5ebb4fb80c63",
+        "android_client_info": {
+          "package_name": "com.techarts.shopnow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714145340506-95ipfogtj9bp38i5bcuvu9bnci58psjk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlucbBL89ga_ioxrJQcnfOWdGKEZJ0kDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714145340506-6kkj72sordotlnlggu673urnd4skhf5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
