@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shopzmclay/vendors/screens/main_vendor_screen.dart';
 import 'package:shopzmclay/views/buyers/auth/login_screen.dart';
 import 'package:shopzmclay/views/buyers/inner_screens/edit_profile.dart';
-
+import 'package:shopzmclay/views/buyers/inner_screens/order_screen.dart';
 
 class AccountScreen extends StatelessWidget {
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -107,7 +107,9 @@ class AccountScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return EditProfileScreen(userData: data,);
+                      return EditProfileScreen(
+                        userData: data,
+                      );
                     }));
                   },
                   child: Container(
@@ -148,7 +150,13 @@ class AccountScreen extends StatelessWidget {
                   title: Text('Cart'),
                 ),
                 ListTile(
-                  leading: Icon(Icons.online_prediction_rounded),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return CustomerOrderScreen();
+                    }));
+                  },
+                  leading: Icon(Icons.shopping_cart),
                   title: Text('Orders'),
                 ),
                 ListTile(

@@ -40,8 +40,8 @@ class MyApp extends StatelessWidget {
       ),
       // home: MainVendorScreen(),
       // home: BuyersRegisterScreen(),
-      home: MainScreen(),
-      // home: LoginScreen(),
+      // home: MainScreen(),
+      home: LoginScreen(),
       builder: EasyLoading.init(),
     );
   }

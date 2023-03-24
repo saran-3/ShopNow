@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:shopzmclay/vendors/screens/vendor_product_detail/vendor_product_detail_screen.dart';
 
 class UnPublishedTab extends StatelessWidget {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -31,11 +32,20 @@ class UnPublishedTab extends StatelessWidget {
         return Container(
           height: MediaQuery.of(context).size.height,
           child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: ((context, Index) {
-                final vendorProductData = snapshot.data!.docs[Index];
-                return Slidable(
+            shrinkWrap: true,
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: ((context, Index) {
+              final vendorProductData = snapshot.data!.docs[Index];
+              return Slidable(
+                child: InkWell(
+                   onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return VendorProductDetailScreen(
+                          productData: vendorProductData,
+                        );
+                      }));
+                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -76,50 +86,52 @@ class UnPublishedTab extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Specify a key if the Slidable is dismissible.
-                  key: const ValueKey(0),
+                ),
+                // Specify a key if the Slidable is dismissible.
+                key: const ValueKey(0),
 
-                  // The start action pane is the one at the left or the top side.
-                  startActionPane: ActionPane(
-                    // A motion is a widget used to control how the pane animates.
-                    motion: const ScrollMotion(),
+                // The start action pane is the one at the left or the top side.
+                startActionPane: ActionPane(
+                  // A motion is a widget used to control how the pane animates.
+                  motion: const ScrollMotion(),
 
-                    // A pane can dismiss the Slidable.
-                    dismissible: DismissiblePane(onDismissed: () {}),
+                  // A pane can dismiss the Slidable.
+                  dismissible: DismissiblePane(onDismissed: () {}),
 
-                    // All actions are defined in the children parameter.
-                    children: [
-                      // A SlidableAction can have an icon and/or a label.
-                      SlidableAction(
-                        flex: 2,
-                        onPressed: (context) async {
-                          await _firestore
-                              .collection('products')
-                              .doc(vendorProductData['productId'])
-                              .update({'approved': true});
-                        },
-                        backgroundColor: Color(0xFF21B7CA),
-                        foregroundColor: Colors.white,
-                        icon: Icons.approval_sharp,
-                        label: 'Publish',
-                      ),
-                      SlidableAction(
-                        flex: 2,
-                        onPressed: (context) async {
-                          await _firestore
-                              .collection('products')
-                              .doc(vendorProductData['productId'])
-                              .delete();
-                        },
-                        backgroundColor: Color(0xFF21B7CA),
-                        foregroundColor: Colors.white,
-                        icon: Icons.delete,
-                        label: 'Delete',
-                      ),
-                    ],
-                  ),
-                );
-              })),
+                  // All actions are defined in the children parameter.
+                  children: [
+                    // A SlidableAction can have an icon and/or a label.
+                    SlidableAction(
+                      flex: 2,
+                      onPressed: (context) async {
+                        await _firestore
+                            .collection('products')
+                            .doc(vendorProductData['productId'])
+                            .update({'approved': true});
+                      },
+                      backgroundColor: Color(0xFF21B7CA),
+                      foregroundColor: Colors.white,
+                      icon: Icons.approval_sharp,
+                      label: 'Publish',
+                    ),
+                    SlidableAction(
+                      flex: 2,
+                      onPressed: (context) async {
+                        // await _firestore
+                        //     .collection('products')
+                        //     .doc(vendorProductData['productId'])
+                        //     .delete();
+                      },
+                      backgroundColor: Color(0xFF21B7CA),
+                      foregroundColor: Colors.white,
+                      icon: Icons.delete,
+                      label: 'Delete',
+                    ),
+                  ],
+                ),
+              );
+            }),
+          ),
         );
       },
     ));
