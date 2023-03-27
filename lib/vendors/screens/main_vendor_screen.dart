@@ -6,7 +6,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:shopzmclay/vendors/screens/earnings_screen.dart';
 import 'package:shopzmclay/vendors/screens/edit_product_screen.dart';
 import 'package:shopzmclay/vendors/screens/upload_screen.dart';
-import 'package:shopzmclay/vendors/screens/vendor_logout_screen.dart';
+import 'package:shopzmclay/vendors/screens/vendor_profile_screen.dart';
 import 'package:shopzmclay/vendors/screens/vendor_order_screen.dart';
 
 class MainVendorScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class _MainVendorScreenState extends State<MainVendorScreen> {
     UploadScreen(),
     EditProductScreen(),
     VendorUploadScreen(),
-    LogoutScreen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -58,7 +58,7 @@ class _MainVendorScreenState extends State<MainVendorScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.logout),
-              label: 'LOGOUT',
+              label: 'ACCOUNT',
             ),
           ]),
       body: _pages[_pageIndex],

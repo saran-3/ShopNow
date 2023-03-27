@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopzmclay/vendors/screens/main_vendor_screen.dart';
+import 'package:shopzmclay/vendors/screens/vendor_logout_screen.dart';
 import 'package:shopzmclay/vendors/screens/vendor_order_screen.dart';
 import 'package:shopzmclay/vendors/views/auth/vendor_login_screen.dart';
 import 'package:shopzmclay/vendors/views/auth/vendor_register_screen.dart';
@@ -10,9 +10,9 @@ import 'package:shopzmclay/views/buyers/auth/login_screen.dart';
 import 'package:shopzmclay/views/buyers/main_screen.dart';
 import 'package:shopzmclay/views/buyers/nav_screens/home_screen.dart';
 
-class VendorLogoutScreen extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  VendorLogoutScreen({super.key});
+  ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -334,7 +334,7 @@ class VendorLogoutScreen extends StatelessWidget {
                                   await _auth.signOut().whenComplete(() {
                                     Navigator.pushReplacement(context,
                                         MaterialPageRoute(builder: (context) {
-                                      return LoginScreen();
+                                      return VendorLogoutScreen();
                                     }));
                                   });
                                 },

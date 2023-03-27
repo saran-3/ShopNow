@@ -70,7 +70,7 @@ class MainProductsWidget extends StatelessWidget {
                         Text(
                           productData['productName'],
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 4,
                           ),
@@ -79,7 +79,7 @@ class MainProductsWidget extends StatelessWidget {
                           '\₹' ' ' +
                               productData['productPrice'].toStringAsFixed(2),
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 4,
                               color: Colors.yellow.shade900),

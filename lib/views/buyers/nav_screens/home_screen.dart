@@ -11,16 +11,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        WelcomeText(),
-        SizedBox(
-          height: 14,
-        ),
-        SearchInputWidget(),
-        BannerWidget(),
-        CategoryText(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 25,
+          ),
+          WelcomeText(),
+          SizedBox(
+            height: 14,
+          ),
+          SearchInputWidget(),
+          BannerWidget(),
+          CategoryText(),
+        ],
+      ),
     );
   }
 }

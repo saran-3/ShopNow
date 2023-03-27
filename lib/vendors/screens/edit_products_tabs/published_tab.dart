@@ -26,7 +26,19 @@ class PublishedTab extends StatelessWidget {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Text("Loading");
+            return Center(
+              child: CircularProgressIndicator(color: Colors.yellow.shade900),
+            );
+          }
+
+          if (snapshot.data!.docs.isEmpty) {
+            return Center(
+              child: Text(
+                'No Published Products \nYet',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+            );
           }
 
           return Container(
@@ -87,48 +99,48 @@ class PublishedTab extends StatelessWidget {
                       ),
                     ),
                   ),
-                    // Specify a key if the Slidable is dismissible.
-                    key: ValueKey(0),
+                  // Specify a key if the Slidable is dismissible.
+                  key: ValueKey(0),
 
-                    // The start action pane is the one at the left or the top side.
-                    startActionPane: ActionPane(
-                      // A motion is a widget used to control how the pane animates.
-                      motion: ScrollMotion(),
+                  // The start action pane is the one at the left or the top side.
+                  startActionPane: ActionPane(
+                    // A motion is a widget used to control how the pane animates.
+                    motion: ScrollMotion(),
 
-                      // A pane can dismiss the Slidable.
-                      dismissible: DismissiblePane(onDismissed: () {}),
+                    // A pane can dismiss the Slidable.
+                    dismissible: DismissiblePane(onDismissed: () {}),
 
-                      // All actions are defined in the children parameter.
-                      children: [
-                        // A SlidableAction can have an icon and/or a label.
-                        SlidableAction(
-                          flex: 2,
-                          onPressed: (context) async {
-                            await _firestore
-                                .collection('products')
-                                .doc(vendorProductData['productId'])
-                                .update({'approved': false});
-                          },
-                          backgroundColor: Color(0xFF21B7CA),
-                          foregroundColor: Colors.white,
-                          icon: Icons.cancel,
-                          label: 'Unpublish',
-                        ),
-                        SlidableAction(
-                          flex: 2,
-                          onPressed: (context) async {
-                            // await _firestore
-                            //     .collection('products')
-                            //     .doc(vendorProductData['productId'])
-                            //     .delete();
-                          },
-                          backgroundColor: Color(0xFF21B7CA),
-                          foregroundColor: Colors.white,
-                          icon: Icons.delete,
-                          label: 'Delete',
-                        ),
-                      ],
-                    ),
+                    // All actions are defined in the children parameter.
+                    children: [
+                      // A SlidableAction can have an icon and/or a label.
+                      SlidableAction(
+                        flex: 2,
+                        onPressed: (context) async {
+                          await _firestore
+                              .collection('products')
+                              .doc(vendorProductData['productId'])
+                              .update({'approved': false});
+                        },
+                        backgroundColor: Color(0xFF21B7CA),
+                        foregroundColor: Colors.white,
+                        icon: Icons.cancel,
+                        label: 'Unpublish',
+                      ),
+                      SlidableAction(
+                        flex: 2,
+                        onPressed: (context) async {
+                          // await _firestore
+                          //     .collection('products')
+                          //     .doc(vendorProductData['productId'])
+                          //     .delete();
+                        },
+                        backgroundColor: Color(0xFF21B7CA),
+                        foregroundColor: Colors.white,
+                        icon: Icons.delete,
+                        label: 'Delete',
+                      ),
+                    ],
+                  ),
                 );
               }),
             ),

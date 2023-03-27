@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:shopzmclay/provider/cart_provider.dart';
 import 'package:shopzmclay/provider/product_provider.dart';
 import 'package:shopzmclay/vendors/screens/main_vendor_screen.dart';
+import 'package:shopzmclay/vendors/views/auth/vendor_auth.dart';
 import 'package:shopzmclay/views/buyers/auth/login_screen.dart';
 import 'package:shopzmclay/views/buyers/auth/register_screen.dart';
 import 'package:shopzmclay/views/buyers/main_screen.dart';
@@ -38,10 +40,31 @@ class MyApp extends StatelessWidget {
         fontFamily: "Brand-Bold",
         primarySwatch: Colors.blue,
       ),
+
+      home: AnimatedSplashScreen(
+          splash: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.shopify_sharp),
+              Text(
+                ('ShopNow'),
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ],
+          ),
+          splashTransition: SplashTransition.fadeTransition,
+          backgroundColor: Colors.blue,
+          nextScreen: MainScreen(),
+          duration: 3000),
+
       // home: MainVendorScreen(),
       // home: BuyersRegisterScreen(),
       // home: MainScreen(),
-      home: LoginScreen(),
+      // home: VendorAuthScreen(),
+      // home: LoginScreen(),
       builder: EasyLoading.init(),
     );
   }

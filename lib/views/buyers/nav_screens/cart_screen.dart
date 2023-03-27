@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopzmclay/provider/cart_provider.dart';
 import 'package:shopzmclay/views/buyers/inner_screens/checkout_screen.dart';
+import 'package:shopzmclay/views/buyers/nav_screens/home_screen.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -23,12 +24,22 @@ class CartScreen extends StatelessWidget {
             letterSpacing: 4,
           ),
         ),
+        // _cartProvider.getCartItem.isNotEmpty?
         actions: [
-          IconButton(
-              onPressed: () {
-                _cartProvider.removeAllItem();
-              },
-              icon: Icon(CupertinoIcons.delete))
+          _cartProvider.getCartItem.isNotEmpty
+              ? IconButton(
+                  onPressed: () {
+                    _cartProvider.removeAllItem();
+                  },
+                  icon: Icon(CupertinoIcons.delete))
+              : IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return HomeScreen();
+                    }));
+                  },
+                  icon: Icon(CupertinoIcons.home))
         ],
       ),
       body: _cartProvider.getCartItem.isNotEmpty

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:shopzmclay/controllers/auth_controller.dart';
 import 'package:shopzmclay/utils/show_snackbar.dart';
+import 'package:shopzmclay/vendors/screens/earnings_screen.dart';
+import 'package:shopzmclay/vendors/views/auth/vendor_register_screen.dart';
 import 'package:shopzmclay/views/buyers/auth/register_screen.dart';
 import 'package:shopzmclay/views/buyers/main_screen.dart';
 import 'package:shopzmclay/views/buyers/nav_screens/home_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class VendorLoginScreen extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<VendorLoginScreen> createState() => _VendorLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _VendorLoginScreenState extends State<VendorLoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final AuthController _authController = AuthController();
   late String email;
@@ -28,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            return MainScreen();
+            return EarningsScreen();
           },
         ),
       );
@@ -124,7 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -133,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return BuyersRegisterScreen();
+                        return VendorRegisterationScreen();
                       }));
                     },
                     child: Text('Sign up'),

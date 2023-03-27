@@ -20,6 +20,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _emailController = TextEditingController();
 
   final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  
   String? address;
 
   @override
@@ -29,6 +31,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       _fullNameController.text = widget.userData['fullName'];
       _emailController.text = widget.userData['email'];
       _phoneController.text = widget.userData['phonenumber'];
+      _phoneController.text = widget.userData['address'];
+      
     });
     super.initState();
   }
@@ -95,9 +99,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    onChanged: (value) {
-                      address = value;
-                    },
+                    controller: _addressController,
+                    // onChanged: (value) {
+                    //   address = value;
+                    // },
                     decoration: InputDecoration(labelText: 'Enter Address'),
                   ),
                 )
@@ -118,7 +123,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               'fullName': _fullNameController.text,
               'email': _emailController.text,
               'phonenumber': _phoneController.text,
-              'address': address,
+              'address': _addressController.text,
             }).whenComplete(() {
               EasyLoading.dismiss();
               Navigator.pop(context);

@@ -26,7 +26,18 @@ class UnPublishedTab extends StatelessWidget {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Center(
+            child: CircularProgressIndicator(color: Colors.yellow.shade900),
+          );
+        }
+
+        if (snapshot.data!.docs.isEmpty) {
+          return Center(
+            child: Text(
+              'No Unpublished Products Yet',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
+          );
         }
 
         return Container(
@@ -38,14 +49,14 @@ class UnPublishedTab extends StatelessWidget {
               final vendorProductData = snapshot.data!.docs[Index];
               return Slidable(
                 child: InkWell(
-                   onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return VendorProductDetailScreen(
-                          productData: vendorProductData,
-                        );
-                      }));
-                   },
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return VendorProductDetailScreen(
+                        productData: vendorProductData,
+                      );
+                    }));
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
